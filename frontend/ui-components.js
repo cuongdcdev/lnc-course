@@ -10,7 +10,7 @@ export function SignInPrompt({greeting, onClick}) {
         Welcome to NEAR!
       </h3>
       <p>
-        Your contract is storing a greeting message in the NEAR blockchain. To
+        Your contract is storing in the NEAR blockchain. To
         change it you need to sign in using the NEAR Wallet. It is very simple,
         just use the button below.
       </p>
@@ -43,7 +43,7 @@ export function EducationalText() {
       </p>
       <ol>
         <li>
-          Look in <code>frontend/App.js</code> - you'll see <code>getGreeting</code> and <code>setGreeting</code> being called on <code>contract</code>. What's this?
+          Learn more about this frontend code in <code>frontend/</code> folder
         </li>
         <li>
           Ultimately, this <code>contract</code> code is defined in <code>./contract</code> – this is the source code for your <a target="_blank" rel="noreferrer" href="https://docs.near.org/docs/develop/contracts/overview">smart contract</a>.</li>
@@ -54,6 +54,14 @@ export function EducationalText() {
       <p>
         To keep learning, check out <a target="_blank" rel="noreferrer" href="https://docs.near.org">the NEAR docs</a> or look through some <a target="_blank" rel="noreferrer" href="https://examples.near.org">example apps</a>.
       </p>
+      <p>
+        This course is created by the community, for the community! <br/> Checkout <a target="_blank" rel="noreferrer" href="https://learnnear.club/">Learn NEAR Club</a> for more learning materials!
+      </p>
+
+      <p>
+
+      </p>
+
     </>
   );
 }

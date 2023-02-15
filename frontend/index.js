@@ -1,20 +1,21 @@
-// React
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App';
-
 import { Wallet } from './near-wallet';
+import { Contract } from './near-interface';
 
-// When creating the wallet you can optionally ask to create an access key
-// Having the key enables to call non-payable methods without interrupting the user to sign
-const wallet = new Wallet({ createAccessKeyFor: process.env.CONTRACT_NAME })
+const reactRoot = createRoot(document.querySelector('#root'));
 
-// Setup on page load
-window.onload = async () => {
-  const isSignedIn = await wallet.startUp()
- 
-  ReactDOM.render(
-    <App isSignedIn={isSignedIn} helloNEAR={helloNEAR} wallet={wallet} />,
-    document.getElementById('root')
-  );
-}
+// create the Wallet and the Contract
+const contractId = process.env.CONTRACT_NAME;
+const wallet = new Wallet({contractId: contractId});
+const contract = new Contract({wallet: wallet});
+
+window.onload = wallet.startUp()
+  .then((isSignedIn) => {
+    reactRoot.render(<App isSignedIn={isSignedIn} contract={contract} wallet={wallet} />);
+  })
+  .catch(e => {
+    reactRoot.render(<div style={{color: 'red'}}>Error: <code>{e.message}</code></div>);
+    console.error(e);
+  });
